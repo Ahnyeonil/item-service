@@ -1,5 +1,6 @@
 package hello.itemservice.domain.item;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Slf4j
 @Repository
 public class ItemRepository {
 
@@ -32,6 +34,10 @@ public class ItemRepository {
         findItem.setItemName(updateParam.getItemName());
         findItem.setPrice(updateParam.getPrice());
         findItem.setQuantity(updateParam.getQuantity());
+    }
+
+    public void delete(Long itemId) {
+        store.remove(itemId);
     }
 
     public void clearStore() {
